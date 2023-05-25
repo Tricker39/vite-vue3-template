@@ -19,7 +19,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-
+    "types": [
+      "pinia-plugin-persist"
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
