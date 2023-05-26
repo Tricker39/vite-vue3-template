@@ -1,18 +1,18 @@
 <template>
   <div>
-    <!-- <div class="icon-park-twotone-add" style="color: orange; font-size: 30px"></div> -->
-    <div :class="icon || 'icon-park-solid-bill'"></div>
-    <button @click="icon = 'icon-park-outline-heart'">like</button>
-    <button @click="type = 'heart'">alike</button>
-    <div>{{ appStore.someState }}</div>
+    <div color="red">{{ appStore.userName }}</div>
+    <div v-for="item in arr" :class="item" uno-text="36px" uno-cursor="pointer" />
   </div>
 </template>
 <script setup lang="ts">
-  import { ref } from 'vue';
-  import { useStore } from '@/store/modules/appStore';
-  const appStore = useStore();
-  appStore.setState('hello');
-  const icon = ref('');
-  const type = ref('');
+  // import { ref } from 'vue';
+  import { useAppStore } from '@/store/modules/appStore';
+  const appStore = useAppStore();
+  const arr = [
+    'icon-park-twotone-search',
+    'icon-park-solid-like',
+    'icon-park-outline-search',
+    'icon-park-solid-config',
+  ];
 </script>
 <style scoped></style>

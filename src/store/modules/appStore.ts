@@ -1,16 +1,14 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-export const useStore = defineStore(
-  'main',
+export const useAppStore = defineStore(
+  'app',
   () => {
-    const someState = ref('你好 pinia');
-    const setState = (state: string) => {
-      someState.value = state;
-    };
-    return { someState, setState };
+    const userName = ref('Tricker');
+    return { userName };
   },
   {
+    // 插件文档 https://prazdevs.github.io/pinia-plugin-persistedstate/zh/guide/
     persist: true,
   }
 );
