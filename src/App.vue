@@ -1,7 +1,7 @@
 <template>
   <div>
     <div color="red">{{ appStore.userName }}</div>
-    <div v-for="item in arr" :class="item" uno-text="36px" uno-cursor="pointer" />
+    <div v-for="item in arr" :class="item" />
   </div>
 </template>
 <script setup lang="ts">

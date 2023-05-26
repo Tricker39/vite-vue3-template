@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
+    "build:dev": "vue-tsc --noEmit && vite build --mode dev",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -21,6 +22,8 @@
     "@iconify-json/icon-park-twotone": "^1.1.9",
     "@types/node": "^20.2.3",
     "@vitejs/plugin-vue": "^4.1.0",
+    "cross-env": "^7.0.3",
+    "rollup-plugin-visualizer": "^5.9.0",
     "scss": "^0.2.4",
     "typescript": "^5.0.2",
     "unocss": "^0.52.0",
