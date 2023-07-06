@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import VueDevTools from 'vite-plugin-vue-devtools';
 import UnoCSS from 'unocss/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { resolve } from 'path';
@@ -43,6 +44,7 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       vue(),
       UnoCSS(),
+      VueDevTools(),
       visualizer({
         gzipSize: true,
         brotliSize: true,
