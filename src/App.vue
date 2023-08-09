@@ -3,6 +3,13 @@
     <div color="red">{{ appStore.userName }}</div>
     <div v-for="item in arr" :class="item">谷歌</div>
     <VNode :content="divEl" />
+    <div>
+      <router-link to="/">Go to Home</router-link>
+    </div>
+    <div>
+      <router-link to="/about">Go to About</router-link>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 <script setup lang="ts">

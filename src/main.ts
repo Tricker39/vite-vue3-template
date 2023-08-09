@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import './style.css';
 import App from './App.vue';
 import { setupStore } from '@/store';
+import { setupRouter } from '@/router';
 
 // #region unocss 调试模式
 // import 'uno.css';
@@ -18,17 +19,15 @@ const bootstrap = async () => {
   // 配置存储
   setupStore(app);
   // 配置路由
-//   setupRouter(app);
+  setupRouter(app);
   // 路由守卫
-//   setupRouterGuard(router);
+  //   setupRouterGuard(router);
   // 注册全局指令
 
   // 配置全局错误处理
 
-
-
   // 当路由准备好时在执行挂载( https://next.router.vuejs.org/api/#isready)
-//   await router.isReady();
+  //   await router.isReady();
   await app.mount('#app');
 };
 // 缓存token
