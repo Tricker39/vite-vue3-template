@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div color="red">{{ appStore.userName }}</div>
+    <div color="red" class="name">{{ appStore.userName }}</div>
     <div v-for="item in arr" :class="item">谷歌</div>
     <VNode :content="divEl" />
     <div>
@@ -27,4 +27,9 @@
   const zoomOut = 'icon-park-outline-zoom-out';
   const divEl = h('div', { class: zoomOut });
 </script>
-<style scoped></style>
+<style lang="scss" scoped>
+  .name {
+    display: flex;
+    user-select: none;
+  }
+</style>
