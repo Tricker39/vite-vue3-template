@@ -1,9 +1,11 @@
 import { createApp } from 'vue';
-import './style.css';
 import App from './App.vue';
 import { setupStore } from '@/store';
-import { setupRouter } from '@/router';
+import { setupRouter, router } from '@/router';
+import { setupRouterGuard } from '@/router/guard';
 
+import '@/assets/styles/reset.scss';
+import 'nprogress/nprogress.css';
 // #region unocss 调试模式
 // import 'uno.css';
 // import 'virtual:unocss-devtools';
@@ -21,7 +23,7 @@ const bootstrap = async () => {
   // 配置路由
   setupRouter(app);
   // 路由守卫
-  //   setupRouterGuard(router);
+  setupRouterGuard(router);
   // 注册全局指令
 
   // 配置全局错误处理

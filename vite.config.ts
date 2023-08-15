@@ -16,7 +16,7 @@ export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
   // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
   const env = loadEnv(mode, process.cwd(), '');
-  let config = {};
+  let config: any = {};
   console.log(command);
   if (command === 'serve') {
     config = {
@@ -41,18 +41,12 @@ export default defineConfig(({ command, mode }) => {
       },
     };
   }
-  return {
+  config = {
     ...config,
     plugins: [
       vue(),
       UnoCSS(),
       VueDevTools(),
-      visualizer({
-        gzipSize: true,
-        brotliSize: true,
-        emitFile: false,
-        open: env.VITE_NODE_ENV === 'development',
-      }),
       AutoImport({
         resolvers: [],
         imports: ['vue', 'vue-router', '@vueuse/core'],
@@ -66,28 +60,7 @@ export default defineConfig(({ command, mode }) => {
         // search for subdirectories
         deep: true,
         // resolvers for custom components
-        resolvers: [
-          // ElementPlusResolver({ importStyle: 'sass' }),
-          // NaiveUiResolver(),
-          // IconsResolver({
-          //   prefix: 'icon',
-          //   alias: {
-          //     'park-fill': 'icon-park-solid',
-          //     'park-multi': 'icon-park',
-          //     park: 'icon-park-outline',
-          //   },
-          //   enabledCollections: ['icon-park-solid', 'icon-park-outline', 'icon-park'],
-          // }),
-          // @ts-ignore icon-park 另一种使用方式
-          // (componentName) => {
-          //   if (componentName.startsWith('Icon')) {
-          //     return {
-          //       name: componentName.slice(4),
-          //       from: '@icon-park/vue-next',
-          //     };
-          //   }
-          // },
-        ],
+        resolvers: [],
         // generate `components.d.ts` global declarations,
         // also accepts a path for custom filename
         dts: 'types/components.d.ts',
@@ -121,4 +94,16 @@ export default defineConfig(({ command, mode }) => {
       ],
     },
   };
+  // 本地打包分析打包文件大小
+  if (env.VITE_NODE_ENV === 'development' && command == 'build') {
+    config?.plugins.push(
+      visualizer({
+        gzipSize: true,
+        brotliSize: true,
+        emitFile: false,
+        open: env.VITE_NODE_ENV === 'development',
+      })
+    );
+  }
+  return config;
 });
